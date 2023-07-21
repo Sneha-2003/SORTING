@@ -39,3 +39,46 @@ class HelloWorld {
     
     }
 }
+
+
+
+//Selection sort
+
+import java.util.*;
+import java.io.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt(),minindex;
+       int arr[]=new int[n];
+       for(int i=0;i<n;i++)
+       {
+           arr[i]=sc.nextInt();
+       }
+       
+       //boolean swapcon=false;
+       for(int i=0;i<n-1;i++)
+       {  
+           minindex=i;
+           for(int j=i+1;j<n;j++)
+           {
+               if(arr[j]<arr[minindex])
+               {
+                   minindex=j;
+               }
+           }
+           
+            int t=arr[i];
+           arr[i]=arr[minindex];
+           arr[minindex]=t;
+           
+           
+       }
+       
+       for(int j=0;j<n;j++)
+       {
+           System.out.println(arr[j]);
+       }
+       
+    }
+}
