@@ -41,44 +41,77 @@ class HelloWorld {
 }
 
 
+-------------------------------------------------------------------------------------------------------------------------------
+Selection sort::
 
-//Selection sort
 
 import java.util.*;
 import java.io.*;
 class HelloWorld {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt(),minindex;
-       int arr[]=new int[n];
-       for(int i=0;i<n;i++)
-       {
-           arr[i]=sc.nextInt();
-       }
-       
-       //boolean swapcon=false;
-       for(int i=0;i<n-1;i++)
-       {  
-           minindex=i;
-           for(int j=i+1;j<n;j++)
-           {
-               if(arr[j]<arr[minindex])
-               {
-                   minindex=j;
-               }
-           }
-           
-            int t=arr[i];
-           arr[i]=arr[minindex];
-           arr[minindex]=t;
-           
-           
-       }
-       
-       for(int j=0;j<n;j++)
-       {
-           System.out.println(arr[j]);
-       }
-       
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        boolean swapflag;
+        
+        for(int i=0;i<n;i++)
+        arr[i]=sc.nextInt();
+        //this sort is not input dependent;
+        int minindex;// to have index whose value is minimum 
+        for(int i=0;i<n-1;i++) //no of runs
+        {  
+            minindex=i;
+            for(int j=i+1;j<n;j++)
+            {
+                if(arr[j]<arr[minindex])
+                minindex=j;
+            }
+            int s=arr[minindex];
+            arr[minindex]=arr[i];
+            arr[i]=s;
+        }
+        for(int i=0;i<n;i++)
+        System.out.println(arr[i]);
     }
 }
+
+-----------------------------------------------------------------------------------------------------------------------------
+Bubble sort::
+
+import java.util.*;
+import java.io.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        boolean swapflag;
+        
+        for(int i=0;i<n;i++)
+        arr[i]=sc.nextInt();
+        //this sort is input dependent;
+        
+        for(int i=0;i<n-1;i++) //no of runs
+        {  swapflag=false; //to check it is a best case (swapping happens or not)
+            for(int j=0;j<n-i-1;j++) // swapping (always elements are sorted at last)
+            {
+                if(arr[j]>arr[j+1])
+                {
+                    int t=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=t;
+                    swapflag=true;
+                }
+            }
+            if(swapflag==false)
+            {
+                break;
+            }
+            
+        }
+        for(int i=0;i<n;i++)
+        System.out.println(arr[i]);
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
