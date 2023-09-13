@@ -1,0 +1,54 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static void mergesort(int[] arr,int low,int mid,int high)
+    {
+        int[] temp=new int[high+1];
+        
+        int i=0,index=low;
+        int left=low,right=mid+1;
+        while(left<=mid && right<=high)
+        {
+            if(arr[left]<=arr[right])
+            temp[i++]=arr[left++];
+            else
+            temp[i++]=arr[right++];
+        }
+        while(left!=mid+1)
+        temp[i++]=arr[left++];
+       while(right!=high+1)
+        temp[i++]=arr[right++]; 
+        
+        while(index!=high+1)
+        {
+            arr[index]=temp[index-low];
+            index++;
+        }
+    }
+    public static void merge(int[] arr,int low,int high)
+    {  
+        if(low>=high)
+        return ;
+        int mid=(low+high)/2;
+        merge(arr,low,mid);
+        merge(arr,mid+1,high);
+        mergesort(arr,low,mid,high);
+    }
+    public static void main(String[] args) {
+        int[] arr={3,1,2,4,1,5,2,6,4};
+        for(Integer i:arr)
+        System.out.print(i+" ");
+        merge(arr,0,arr.length-1);
+         System.out.println(" ");
+         for(Integer i:arr)
+          System.out.print(i+"->");
+        
+    }
+}
+
+
+
+o/p::
+3 1 2 4 1 5 2 6 4  
+1->1->2->2->3->4->4->5->6->
